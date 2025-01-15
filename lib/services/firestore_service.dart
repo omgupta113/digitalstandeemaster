@@ -44,6 +44,17 @@ class FirestoreService {
 
     await _firestore.collection('slaves').doc(slave.id).set(slaveWithMaster);
   }
+  Future<void> deleteContent(String contentId) async {
+    if (currentMasterId == null) throw Exception('Not authenticated');
+    await _firestore.collection('content').doc(contentId).delete();
+  }
+
+  Future<void> updateContentDuration(String contentId, int newDuration) async {
+    if (currentMasterId == null) throw Exception('Not authenticated');
+    await _firestore.collection('content').doc(contentId).update({
+      'displayDuration': newDuration,
+    });
+  }
 
   Stream<List<Slave>> getSlaves() {
     if (currentMasterId == null) throw Exception('Not authenticated');

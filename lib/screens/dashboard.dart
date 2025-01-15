@@ -5,6 +5,7 @@ import '../models/slave_model.dart';
 import 'upload_content.dart';
 import 'slave_management.dart';
 import 'login_screen.dart';
+import 'content_management.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -60,7 +61,7 @@ class _DashboardState extends State<Dashboard> {
                 onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => UploadContent(slaveId: slave.id),
+                    builder: (context) => ContentManagement(slaveId: slave.id),
                   ),
                 ),
               );
